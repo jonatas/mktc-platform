@@ -482,7 +482,10 @@ public class RequestHandler
     private void receiveMessageExecutionReport(ExecutionReportImpl msgEnv) {
         Messages.ERI_RECEIVED_MESSAGE.info(this,msgEnv);
         try {
-			getSender().sendToTarget(msgEnv.getMessage());
+        	
+			Message message = msgEnv.getMessage();
+			addRequiredFields(message);
+			getSender().sendToTarget(message);
 		} catch (SessionNotFound e) {
 			e.printStackTrace();
 		}

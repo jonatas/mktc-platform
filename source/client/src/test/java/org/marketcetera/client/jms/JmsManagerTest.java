@@ -210,8 +210,8 @@ public class JmsManagerTest
         // Queues.
         SampleEnvelopeReplyHandler replyOEX=
             new SampleEnvelopeReplyHandler();
-        SampleReceiveOnlyHandler<OrderEnvelope> receiveOnlyOEX=
-            new SampleReceiveOnlyHandler<OrderEnvelope>();
+        SampleReceiveOnlyHandler<Object> receiveOnlyOEX=
+            new SampleReceiveOnlyHandler<Object>();
         mgr.getIncomingJmsFactory().registerHandlerOEX
             (replyOEX,senderName,false,replyName,false);
         mgr.getIncomingJmsFactory().registerHandlerOEX
@@ -274,4 +274,10 @@ public class JmsManagerTest
         single(mgr.getOutgoingJmsFactory().createJmsTemplateX
                (senderName,true),repliesBSX,receiversBSX);
     }
+
+	private void single(JmsTemplate createJmsTemplateX,
+			SampleEnvelopeReplyHandler replyOEX,
+			SampleReceiveOnlyHandler<Object> receiveOnlyOEX) {
+		throw new IllegalArgumentException();
+	}
 }

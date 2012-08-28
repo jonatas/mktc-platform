@@ -32,10 +32,11 @@ import quickfix.FieldNotFound;
  */
 @ClassVersion("$Id$") //$NON-NLS-1$
 public class MockMessageHandler
-    implements ReceiveOnlyHandler<OrderEnvelope>
+    implements ReceiveOnlyHandler<Object>
 {
     @Override
-    public void receiveMessage(OrderEnvelope inObject) {
+    public void receiveMessage(Object obj) {
+    	OrderEnvelope inObject = (OrderEnvelope)obj;
         Object send;
         if(inObject.getOrder() instanceof HasFIXMessage) {
             try {

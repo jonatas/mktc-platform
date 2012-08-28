@@ -50,7 +50,7 @@ import org.springframework.jms.listener.SimpleMessageListenerContainer;
  * @since 1.0.0
  */
 @ClassVersion("$Id$")
-class ClientImpl implements Client, javax.jms.ExceptionListener {
+public class ClientImpl implements Client, javax.jms.ExceptionListener {
 
     @Override
     public void sendOrder(OrderSingle inOrderSingle)
@@ -455,7 +455,7 @@ class ClientImpl implements Client, javax.jms.ExceptionListener {
      * @throws ConnectionException if there were errors connecting
      * to the server.
      */
-    ClientImpl(ClientParameters inParameters) throws ConnectionException {
+    public ClientImpl(ClientParameters inParameters) throws ConnectionException {
         setParameters(inParameters);
         connect();
     }

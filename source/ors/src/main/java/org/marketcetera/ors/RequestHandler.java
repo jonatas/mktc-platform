@@ -45,7 +45,7 @@ import quickfix.field.OrderID;
 
 @ClassVersion("$Id$")
 public class RequestHandler 
-    implements ReceiveOnlyHandler<OrderEnvelope>
+    implements ReceiveOnlyHandler<Object>
 {
 
     // CLASS DATA.
@@ -470,6 +470,25 @@ public class RequestHandler
 
     @Override
     public void receiveMessage
+    	(Object msgEnv)
+	{
+	    if (msgEnv instanceof OrderEnvelope) {
+	    	receiveMessageOrderEnvelope((OrderEnvelope)msgEnv);
+	    } else if (msgEnv instanceof ExecutionReportImpl) {
+	    	receiveMessageExecutionReport((ExecutionReportImpl)msgEnv);
+	    }
+	}
+    
+    private void receiveMessageExecutionReport(ExecutionReportImpl msgEnv) {
+        Messages.ERI_RECEIVED_MESSAGE.info(this,msgEnv);
+        try {
+			getSender().sendToTarget(msgEnv.getMessage());
+		} catch (SessionNotFound e) {
+			e.printStackTrace();
+		}
+	}
+
+    private void receiveMessageOrderEnvelope
         (OrderEnvelope msgEnv)
     {
         Messages.RH_RECEIVED_MESSAGE.info(this,msgEnv);

@@ -1,6 +1,7 @@
 package org.marketcetera.client;
 
 import org.marketcetera.client.jms.JmsManager;
+import org.marketcetera.client.jms.ReceiveOnlyHandler;
 import org.marketcetera.util.ws.stateless.ServiceInterface;
 import org.marketcetera.util.ws.stateful.Server;
 import org.marketcetera.util.ws.stateful.SessionManager;

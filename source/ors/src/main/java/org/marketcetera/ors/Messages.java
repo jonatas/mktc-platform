@@ -102,7 +102,9 @@ public interface Messages
     static final I18NMessage1P RH_REJ_AUGMENTATION_FAILED=
         new I18NMessage1P(LOGGER,"rh_rej_augmentation_failed"); //$NON-NLS-1$
     static final I18NMessage1P RH_RECEIVED_MESSAGE=
-        new I18NMessage1P(LOGGER,"rh_received_message"); //$NON-NLS-1$
+            new I18NMessage1P(LOGGER,"rh_received_message"); //$NON-NLS-1$
+    static final I18NMessage1P ERI_RECEIVED_MESSAGE=
+            new I18NMessage1P(LOGGER,"eri_received_message"); //$NON-NLS-1$
     static final I18NMessage0P RH_NULL_MESSAGE_ENVELOPE=
         new I18NMessage0P(LOGGER,"rh_null_message_envelope"); //$NON-NLS-1$
     static final I18NMessage1P RH_SESSION_EXPIRED=

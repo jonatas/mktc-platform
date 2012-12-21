@@ -122,8 +122,14 @@ public abstract class InstrumentToMessage<I extends Instrument> extends Instrume
         if(inInstrument.getSecurityType() != null &&
                 inDictionary.isMsgField(inMsgType,SecurityType.FIELD)) {
             String fixValue = inInstrument.getSecurityType().getFIXValue();
-            if(inDictionary.isFieldValue(SecurityType.FIELD, fixValue)) {
-                inMessage.setField(new SecurityType(fixValue));
+            try {
+              if(inDictionary.isFieldValue(SecurityType.FIELD, fixValue)) {
+                  inMessage.setField(new SecurityType(fixValue));
+              }
+            } catch (NullPointerException npe ){
+             System.out.println("Erro ao tentar colocar o Security Type");
+              npe.printStackTrace();
+              inMessage.setField(new SecurityType(fixValue));
             }
         }
     }
